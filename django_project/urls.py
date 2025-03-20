@@ -18,9 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.views.generic import TemplateView
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     # user management
     path("accounts/", include("allauth.urls")),  # new
     # Add app urls below (ie. "pages.urls")
+    # Remove before use
+    path("about/", TemplateView.as_view(template_name="about.html")),
 ]
