@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "allauth.account",
     # local
     "accounts.apps.AccountsConfig",
+    "todos.apps.TodosConfig",
 ]
 
 MIDDLEWARE = [
