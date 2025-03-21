@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from django.conf import settings
+from django.utils import timezone
 
 
 # Create your models here.
@@ -20,9 +21,9 @@ class Todo(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     # auto_now_add=True sets the model to the time when it is created
-    date_published = models.DateTimeField(auto_now_add=True)
+    created = models.DateField(default=timezone.now())
     # auto_now=True sets the time wheneve the model is updated
-    date_updated = models.DateTimeField(auto_now=True)
+    due = models.DateField()
     completed = models.BooleanField(default=False)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -39,7 +40,7 @@ class Todo(models.Model):
 class Note(models.Model):
     todo = models.ForeignKey(Todo, on_delete=models.CASCADE)
     note = models.TextField()
-    date_added = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):

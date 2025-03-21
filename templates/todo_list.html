@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block title %}Todos{% endblock title %}
+
+{% block content %}
+<h1 class="display-3 p-4">Todo List</h1>
+
+{% for object in object_list %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ object.title }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Due: </h6>
+      <p class="card-text">{{ object.body|truncatechars:255 }}</p>
+      <p>
+        {% if object.priority == "H" %}
+        <span class="tect-muted">High Priority</span>
+        {% elif object.priority == "M" %}
+        <span class="tect-muted">Medium Priority</span>
+        {% elif object.priority == "L" %}
+        <span class="text-muted">Low Priority</span>
+        {% endif %}</p>
+      <a href="#" class="card-link">Update</a>
+      <a href="#" class="card-link">Delete</a>
+    </div>
+  </div>
+{% endfor %}
+</ul>
+{% endblock content %}

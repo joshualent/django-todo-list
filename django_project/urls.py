@@ -26,6 +26,6 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),  # new
     # Add app urls below (ie. "pages.urls")
     # Remove before use
+    path("", include("todos.urls")),
     path("about/", TemplateView.as_view(template_name="about.html"), name="home"),
-    path("", TemplateView.as_view(template_name="home.html"), name="home"),
 ]
